@@ -1,4 +1,4 @@
-from .detector import Dist_Detector, save_dist_model, load_model
+from .detector import Dist_Detector, save_dist_model, load_dist_model
 import torch
 import torch.utils.tensorboard as tb
 import numpy as np
@@ -20,7 +20,7 @@ def train(args):
 
     model = Dist_Detector().to(device)
     if args.continue_training:
-        model.load_state_dict(torch.load(path.join(path.dirname(path.abspath(__file__)), 'det.th')))
+        model = load_dist_model().to(device)
 
     # optimizer = torch.optim.SGD(model.parameters(), lr=args.learning_rate, momentum=0.9, weight_decay=1e-5)
 
