@@ -82,7 +82,7 @@ class HockeyPlayer:
             return abs(ball_screen[0]) < 0.15
 
         def ball_in_front(ball_distance, ball_screen, speed):
-            return (ball_distance/speed) < 0.6 and ball_in_middle(ball_screen)
+            return (ball_distance/speed) < 0.4 and ball_in_middle(ball_screen)
             # return False
 
         def hit_ball(ball_screen, player, enemy_goal):
@@ -146,7 +146,7 @@ class HockeyPlayer:
             action['brake'] = True
             action['steer'] = -1 if self.last_ball_screen[0] > 0 else 1 
 
-            if HockeyPlayer.ball_share[1] - self.step < 2:
+            if self.step - HockeyPlayer.ball_share[1] < 5:
                 ball_screen, in_front = world_to_screen(player_info, HockeyPlayer.ball_share[0])
                 if in_front:
                     action['acceleration'] = 1 if ball_in_middle(ball_screen) else 0.6
@@ -168,5 +168,6 @@ class HockeyPlayer:
         self.step += 1
 
         return action, ball_on_screen, self.last_ball_screen.copy()
+        # return action
 
    
