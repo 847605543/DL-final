@@ -146,7 +146,7 @@ class HockeyPlayer:
             action['brake'] = True
             action['steer'] = -1 if self.last_ball_screen[0] > 0 else 1 
 
-            if HockeyPlayer.ball_share[1] - self.step < 2:
+            if self.step - HockeyPlayer.ball_share[1] < 2:
                 ball_screen, in_front = world_to_screen(player_info, HockeyPlayer.ball_share[0])
                 if in_front:
                     action['acceleration'] = 1 if ball_in_middle(ball_screen) else 0.6
