@@ -21,10 +21,7 @@ To get started, we designed a simple controller to collect data. We were provide
 
 For each frame, we projected the puck 3D location to the current player’s camera view using the function,
 
-$$
-p = proj \ @ \ view \ @\  np.array(list(puck\_location) + [1]) \\ 
-screen = np.array([p[0] / p[-1], - p[1] / p[-1]])
-$$
+![](./equations.png)
 
 If the projection of the puck was on the kart’s screen, we saved it to a folder containing the examples that were on screen along with the screen coordinate of the puck. If the coordinate was not on screen, then we saved it to a separate folder containing examples where the puck was not on screen.
 
